@@ -1,0 +1,27 @@
+<div class="m-3">
+  <div class="d-flex justify-content-between">
+    <h1><%= @task.title %></h1>
+    <div>
+      <%= link_to "Edit this task", edit_task_path, class: "btn btn-light border border-3" %>
+    </div>
+  </div>
+
+  <div class="bg-light border border-3 px-3 mt-3"><%= @task.details %></div>
+
+  <div>
+    </p>
+      <%= check_box_tag(@task.title, "1", @task.completed) %>
+      <%= @task.completed ? "This task is completed.": "This task is not completed yet."%>
+      <%= link_to "Wanna 🗑️ it?",
+        task_path(@task),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    <p>
+  <%# </div>
+  <br>
+  <%= link_to "Delete",
+    task_path(@task),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+  <p class="border-top border-3 pt-3"><%= link_to "🔙 Back to list", tasks_path %></p>
+</div>
